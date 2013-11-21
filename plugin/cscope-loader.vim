@@ -30,7 +30,7 @@ endfunction
 
 function! LoadCscopeProject()
     if filereadable("cscope.out")
-        call LoadCscope()        
+        call LoadCscope()
     else
         echo "cscope.out not found, create it..."
         call CreateCscopeDb()
@@ -39,7 +39,7 @@ function! LoadCscopeProject()
         call LoadTags()
     else
         echo "tags not found, create it..."
-        call CreateTags()   
+        call CreateTags()
     endif
     echo "Load cscope project success!"
 endfunction
