@@ -15,7 +15,7 @@ function! CsReload()
 endfunction
 
 function! CsHome()
-    echo python getHome()
+    python printHome()
 endfunction
 
 command! -nargs=0 CsLoad call CsLoad()

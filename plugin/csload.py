@@ -52,3 +52,6 @@ def load():
 def reload():
     mkCsDb()
     loadCsAndTags()
+
+def printHome():
+    print getHome()
