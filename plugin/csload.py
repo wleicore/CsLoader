@@ -48,10 +48,12 @@ def load():
     else:
         mkCsDb()
         loadCsAndTags()
+    print "load cscope and tags ok!"
 
 def reload():
     mkCsDb()
     loadCsAndTags()
+    print "reload cscope and tags ok!"
 
 def printHome():
     print getHome()
