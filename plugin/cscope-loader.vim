@@ -1,18 +1,21 @@
 " cscope-loader.vim
 
+let s:plugin_path = escape(expand('<sfile>:p:h'), '\')
+if !exists('s:python_loaded')
+    exe 'pyfile ' . fnameescape(s:plugin_path) . '/csload.py'
+    let s:python_loaded=1
+endif
+
 function! CsLoad()
-    pyfile csload.py
     python load()
 endfunction
 
 function! CsReload()
-    pyfile csload.py
     python reload()
 endfunction
 
 function! CsHome()
-    pyfile csload.py
-    python getHome()
+    echo python getHome()
 endfunction
 
 command! -nargs=0 CsLoad call CsLoad()
