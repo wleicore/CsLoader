@@ -2,7 +2,7 @@
 
 let s:plugin_path = escape(expand('<sfile>:p:h'), '\')
 if !exists('s:python_loaded')
-    exe 'pyfile ' . fnameescape(s:plugin_path) . '/csload.py'
+    exe 'pyfile ' . fnameescape(s:plugin_path) . '/csloader.py'
     let s:python_loaded=1
 endif
 
@@ -20,6 +20,7 @@ endfunction
 
 function! CsClean()
     python cleanHome()
+endfunction
 
 command! -nargs=0 CsLoad call CsLoad()
 command! -nargs=0 CsReload call CsReload()
