@@ -1,3 +1,5 @@
+# !/usr/bin/env python
+# 
 # file csload.py
 
 import os
@@ -38,6 +40,8 @@ def mkCsDb():
 def loadCsAndTags():
     try:
         vim.command("cs add " + csDbFile())
+        # 防止cscope的重复链接
+        vim.command("cs reset")
         vim.command("set tags=" + tagsFile())
     except Exception as e:
         print e
@@ -57,3 +61,7 @@ def reload():
 
 def printHome():
     print getHome()
+
+def cleanHome():
+    home = getHome()
+    os.removedirs(home)

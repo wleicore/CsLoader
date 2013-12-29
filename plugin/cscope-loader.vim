@@ -18,6 +18,10 @@ function! CsHome()
     python printHome()
 endfunction
 
+function! CsClean()
+    python cleanHome()
+
 command! -nargs=0 CsLoad call CsLoad()
 command! -nargs=0 CsReload call CsReload()
 command! -nargs=0 CsHome call CsHome()
+command! -nargs=0 CsClean call CsClean()
