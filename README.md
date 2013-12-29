@@ -1,4 +1,4 @@
-#cscope-loader
+#CsLoader
 管理vim下的cscope和tags加载。并且将cscope和tags文件保存在~/.cscope-loader目录下，避免影响版本控制软件的使用
 ##命令：
 ###CsLoad
