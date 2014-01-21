@@ -3,6 +3,7 @@
 # file csload.py
 
 import os
+import shutil
 import vim
 
 ROOT = os.getenv("HOME") + "/.cscope-loader/"
@@ -64,4 +65,8 @@ def printHome():
 
 def cleanHome():
     home = getHome()
-    os.removedirs(home)
+    if os.path.exists(home):
+        print "clean home ok!"
+        shutil.rmtree(home)
+    else:
+        print "Abort, " + home + " is not exists!"
