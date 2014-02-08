@@ -71,7 +71,7 @@ def cleanHome():
     else:
         print "Abort, " + home + " is not exists!"
 
-def onInit():
+def init():
     home = getHome()
     if os.path.exists(home):
         loadCsAndTags()

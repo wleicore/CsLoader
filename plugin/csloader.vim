@@ -22,15 +22,13 @@ function! CsClean()
     python cleanHome()
 endfunction
 
-function! CsInit()
-    python onInit()
-endfunction
-
 command! -nargs=0 CsLoad call CsLoad()
 command! -nargs=0 CsReload call CsReload()
 command! -nargs=0 CsHome call CsHome()
 command! -nargs=0 CsClean call CsClean()
 
-if !exists('g:csloader_execute_init')
-    call CsInit()
+function! csloader#init()
+    if !exists('g:csloader_init_load')
+        python init()
+    endif
 endfunction
