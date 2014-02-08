@@ -6,29 +6,29 @@ if !exists('s:python_loaded')
     let s:python_loaded=1
 endif
 
-function! CsLoad()
+func! CsLoad()
     python load()
-endfunction
+endf
 
-function! CsReload()
+func! CsReload()
     python reload()
-endfunction
+endf
 
-function! CsHome()
+func! CsHome()
     python printHome()
-endfunction
+endf
 
-function! CsClean()
+func! CsClean()
     python cleanHome()
-endfunction
+endf
 
 command! -nargs=0 CsLoad call CsLoad()
 command! -nargs=0 CsReload call CsReload()
 command! -nargs=0 CsHome call CsHome()
 command! -nargs=0 CsClean call CsClean()
 
-function! csloader#init()
+func! csloader#init(...) abort
     if !exists('g:csloader_init_load')
         python init()
     endif
-endfunction
+endf
