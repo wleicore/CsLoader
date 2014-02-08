@@ -75,5 +75,6 @@ def onInit():
     home = getHome()
     if os.path.exists(home):
         loadCsAndTags()
+        vim.command("silent !echo 'CsLoad excuted!'")
     else:
-        print "Excute \'CsLoad\' to load cscope db and tags"
+        vim.command("silent !echo 'Excute CsLoad to create cscope db and tags!'")
