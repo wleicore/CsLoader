@@ -26,3 +26,5 @@ command! -nargs=0 CsLoad call CsLoad()
 command! -nargs=0 CsReload call CsReload()
 command! -nargs=0 CsHome call CsHome()
 command! -nargs=0 CsClean call CsClean()
+
+python onInit()

@@ -70,3 +70,10 @@ def cleanHome():
         shutil.rmtree(home)
     else:
         print "Abort, " + home + " is not exists!"
+
+def onInit():
+    home = getHome()
+    if os.path.exists(home):
+        loadCsAndTags()
+    else:
+        print "Excute \'CsLoad\' to load cscope db and tags"
