@@ -28,7 +28,7 @@ command! -nargs=0 CsHome call CsHome()
 command! -nargs=0 CsClean call CsClean()
 
 func! csloader#init(...) abort
-    if !exists('g:csloader_init_load')
+    if exists('g:csloader_init_load')
         python init()
     endif
 endf
