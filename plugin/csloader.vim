@@ -27,6 +27,6 @@ command! -nargs=0 CsReload call CsReload()
 command! -nargs=0 CsHome call CsHome()
 command! -nargs=0 CsClean call CsClean()
 
-if exists('g:csloader_auto_load_when_exists')
-    python init()
+if exists('g:csloader_auto_load_when_start')
+    python loadWhenStart()
 endif

@@ -71,10 +71,7 @@ def cleanHome():
     else:
         print "Abort, " + home + " is not exists!"
 
-def init():
+def loadWhenStart():
     home = getHome()
     if os.path.exists(home):
         loadCsAndTags()
-        # print "\'CsLoad\' excuted"
-    else:
-        # print "Excute \'CsLoad\' to connect cscope and tags!"
