@@ -75,6 +75,6 @@ def init():
     home = getHome()
     if os.path.exists(home):
         loadCsAndTags()
-        print "\'CsLoad\' excuted"
+        # print "\'CsLoad\' excuted"
     else:
-        print "Excute \'CsLoad\' to connect cscope and tags!"
+        # print "Excute \'CsLoad\' to connect cscope and tags!"
