@@ -9,7 +9,7 @@ import vim
 ROOT = os.getenv("HOME") + "/.cscope-loader/"
 
 FIND_CMD = "find . -name \*.java -o -name \*.h -o -name \*.c -o -name \*.cpp -o -name \*.xml> cscope.files"
-CSCOPE_CMD = "cscope -bq"
+CSCOPE_CMD = "cscope -bkq -i cscope.files"
 TAGS_CMD = "ctags --file-scope=no -R `pwd`"
 
 def getHome():
