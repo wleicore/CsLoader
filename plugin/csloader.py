@@ -6,29 +6,29 @@ import os
 import shutil
 import vim
 
-ROOT = os.getenv("HOME") + "/.cscope-loader/"
+__ROOT = os.getenv("HOME") + "/.cscope-loader/"
 
-FIND_CMD = "find . -name \*.java -o -name \*.h -o -name \*.c -o -name \*.cpp -o -name \*.xml> cscope.files"
-CSCOPE_CMD = "cscope -bkq -i cscope.files"
-TAGS_CMD = "ctags --file-scope=no -R `pwd`"
+__FIND_CMD = "find . -name \*.java -o -name \*.h -o -name \*.c -o -name \*.cpp -o -name \*.xml> cscope.files"
+__CSCOPE_CMD = "cscope -bkq -i cscope.files"
+__TAGS_CMD = "ctags --file-scope=no -R `pwd`"
 
-def getHome():
+def __getHome():
     cwd = os.getcwd()
     home = hash(cwd)
-    return ROOT + str(home)
+    return __ROOT + str(home)
 
-def csDbFile():
-    return getHome() + "/cscope.out"
+def __csDbFile():
+    return __getHome() + "/cscope.out"
 
-def tagsFile():
-    return getHome() + "/tags"
+def __tagsFile():
+    return __getHome() + "/tags"
 
-def mkCsDb():
+def __mkCsDb():
     try:
-        os.system(FIND_CMD)
-        os.system(CSCOPE_CMD)
-        os.system(TAGS_CMD)
-        home = getHome()
+        os.system(__FIND_CMD)
+        os.system(__CSCOPE_CMD)
+        os.system(__TAGS_CMD)
+        home = __getHome()
 
         # move cscope.* and tags to ~/.cscope-loader/[hash]
         if os.path.exists(home) == False:
@@ -38,33 +38,33 @@ def mkCsDb():
     except Exception as e:
         print e
 
-def loadCsAndTags():
+def __loadCsAndTags():
     try:
-        vim.command("cs add " + csDbFile())
+        vim.command("cs add " + __csDbFile())
         # 防止cscope的重复链接
         vim.command("cs reset")
-        vim.command("set tags=" + tagsFile())
+        vim.command("set tags=" + __tagsFile())
     except Exception as e:
         print e
 
 def load():
-    if os.path.exists(csDbFile()):
-        loadCsAndTags()
+    if os.path.exists(__csDbFile()):
+        __loadCsAndTags()
     else:
-        mkCsDb()
-        loadCsAndTags()
+        __mkCsDb()
+        __loadCsAndTags()
     print "load cscope and tags ok!"
 
 def reload():
-    mkCsDb()
-    loadCsAndTags()
+    __mkCsDb()
+    __loadCsAndTags()
     print "reload cscope and tags ok!"
 
 def printHome():
-    print getHome()
+    print __getHome()
 
 def cleanHome():
-    home = getHome()
+    home = __getHome()
     if os.path.exists(home):
         print "clean home ok!"
         shutil.rmtree(home)
@@ -72,6 +72,6 @@ def cleanHome():
         print "Abort, " + home + " is not exists!"
 
 def loadWhenStart():
-    home = getHome()
+    home = __getHome()
     if os.path.exists(home):
-        loadCsAndTags()
+        __loadCsAndTags()
