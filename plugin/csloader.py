@@ -35,8 +35,10 @@ def __tagsFile():
 def __mkCsDb():
     try:
         # os.system(__FIND_CMD)
-        for findCmd in __FILE_CMDS:
-            os.system(findCmd)
+
+        if os.path.exists("./cscope.files") == False:
+            for findCmd in __FILE_CMDS:
+                os.system(findCmd)
 
         os.system(__CSCOPE_CMD)
         os.system(__TAGS_CMD)
