@@ -10,10 +10,10 @@ __ROOT = os.getenv("HOME") + "/.cscope-loader/"
 
 #__FIND_CMD = "find . -name \*.java -o -name \*.h -o -name \*.c -o -name \*.cpp -o -name \*.xml> cscope.files"
 __FILE_CMDS = [
-        "find . -name \*.java > cscope.files",
-        "find . -name \*.c >> cscope.files",
-        "find . -name \*.cpp >> cscope.files",
-        "find . -name \*.h >> cscope.files"
+        "find `pwd` -name \*.java > cscope.files",
+        "find `pwd` -name \*.c >> cscope.files",
+        "find `pwd` -name \*.cpp >> cscope.files",
+        "find `pwd` -name \*.h >> cscope.files"
         ]
 
 #__CSCOPE_CMD = "cscope -bkq -i cscope.files"
