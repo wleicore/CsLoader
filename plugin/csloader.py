@@ -8,9 +8,18 @@ import vim
 
 __ROOT = os.getenv("HOME") + "/.cscope-loader/"
 
-__FIND_CMD = "find . -name \*.java -o -name \*.h -o -name \*.c -o -name \*.cpp -o -name \*.xml> cscope.files"
-__CSCOPE_CMD = "cscope -bkq -i cscope.files"
-__TAGS_CMD = "ctags --file-scope=no -R `pwd`"
+#__FIND_CMD = "find . -name \*.java -o -name \*.h -o -name \*.c -o -name \*.cpp -o -name \*.xml> cscope.files"
+__FILE_CMDS = [
+        "find . -name \*.java > cscope.files",
+        "find . -name \*.c >> cscope.files",
+        "find . -name \*.cpp >> cscope.files",
+        "find . -name \*.h >> cscope.files"
+        ]
+
+#__CSCOPE_CMD = "cscope -bkq -i cscope.files"
+__CSCOPE_CMD = "cscope -cb"
+#__TAGS_CMD = "ctags --file-scope=no -R `pwd`"
+__TAGS_CMD = "ctags --fields=+i -n -R -L ./cscope.files"
 
 def __getHome():
     cwd = os.getcwd()
@@ -25,7 +34,10 @@ def __tagsFile():
 
 def __mkCsDb():
     try:
-        os.system(__FIND_CMD)
+        # os.system(__FIND_CMD)
+        for findCmd in __FILE_CMDS:
+            os.system(findCmd)
+
         os.system(__CSCOPE_CMD)
         os.system(__TAGS_CMD)
         home = __getHome()
